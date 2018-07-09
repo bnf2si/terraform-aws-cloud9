@@ -1,7 +1,9 @@
 /**
- * Module to launch cloud9 ec2s of ssh-type (including VPC, Subnet,..)
+ * ## Module to launch cloud9 ec2s of ssh-type (including VPC, Subnet,..)
  *
  * Usage: see example folder
+ *
+ * Readme.md is generated with `terraform-docs md . > Readme.md`
  */
 
 variable name {
