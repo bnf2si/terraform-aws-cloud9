@@ -7,6 +7,7 @@ resource "aws_instance" "cloud9" {
   key_name                    = "${aws_key_pair.cloud9.*.id[count.index]}"
   associate_public_ip_address = true
   vpc_security_group_ids      = ["${aws_security_group.cloud9.id}"]
+  iam_instance_profile = "Cloud9_Admin"
 
   user_data = "${data.template_file.user_data.rendered}"
 
@@ -14,6 +15,10 @@ resource "aws_instance" "cloud9" {
     Name = "${var.name}_${var.env_names[count.index]}"
     Project = "Shared"
   }
+  
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }  
 }
 
 resource "aws_eip" "cloud9" {
