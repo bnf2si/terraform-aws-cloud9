@@ -12,6 +12,7 @@ resource "aws_instance" "cloud9" {
 
   tags {
     Name = "${var.name}_${var.env_names[count.index]}"
+    Project = "Shared"
   }
 }
 
